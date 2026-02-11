@@ -3,7 +3,7 @@ import { FoundationChecklist } from '@/components/sections/foundation-checklist'
 
 export default function Home() {
   return (
-    <main className="container" style={{ paddingBlock: '2rem 3rem' }}>
+    <main className="container py-8 md:py-12">
       <Hero />
       <FoundationChecklist />
     </main>

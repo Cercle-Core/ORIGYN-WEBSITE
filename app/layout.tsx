@@ -1,7 +1,8 @@
 import './globals.css';
-import { Analytics } from '@/components/providers/analytics';
+import type { Metadata } from 'next';
+import { Analytics } from '@vercel/analytics/react';
 
-export const metadata = {
+export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
   title: {
     default: 'ORIGYN Platform',
@@ -10,7 +11,7 @@ export const metadata = {
   description: 'ORIGYN platform website and ecosystem information.'
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className="bg-slate-950 text-slate-100 antialiased">

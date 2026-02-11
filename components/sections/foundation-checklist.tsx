@@ -8,11 +8,11 @@ const checklist = [
 
 export function FoundationChecklist() {
   return (
-    <section className="card" style={{ marginTop: '1rem' }}>
-      <h2 style={{ marginTop: 0 }}>Technical baseline checklist</h2>
-      <ul style={{ paddingLeft: '1rem', marginBottom: 0 }}>
+    <section className="card mt-4">
+      <h2 className="mt-0 text-xl font-semibold">Technical baseline checklist</h2>
+      <ul className="mb-0 list-disc space-y-2 pl-5">
         {checklist.map((item) => (
-          <li key={item} style={{ marginBottom: '0.45rem', color: '#e2e8f0' }}>
+          <li key={item} className="text-slate-200">
             {item}
           </li>
         ))}

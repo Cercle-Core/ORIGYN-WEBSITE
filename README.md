@@ -4,13 +4,14 @@ Production-ready website foundation for the ORIGYN platform, built with Next.js 
 
 ## Technical Foundation (Phase 1)
 
-This repository now includes:
+This repository includes:
 
-- Scalable Next.js project structure (`app`, `components`, `lib`, `styles`, `content`).
-- App Router baseline with metadata, loading, error, and not-found boundaries.
-- CI quality gates for lint + build.
+- TypeScript-first Next.js App Router architecture.
+- Tailwind CSS baseline with global tokens and utility-ready styling.
+- Framer Motion and Lucide setup for subtle motion and iconography.
+- Vercel Analytics integration.
+- CI quality gates for typecheck, lint, and build.
 - Deployment-ready configuration for Vercel environments.
-- Security-focused response headers in `next.config.js`.
 
 ## Project Structure
 
@@ -25,31 +26,25 @@ platform-website/
 ├── .github/
 ├── next.config.js
 ├── package.json
-└── jsconfig.json
+└── tsconfig.json
 ```
 
 ## Local Development
 
-1. Install dependencies:
-
 ```bash
 npm install
-```
-
-2. Run development server:
-
-```bash
 npm run dev
 ```
 
-3. Open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:3000](http://localhost:3000).
 
 ## Scripts
 
 - `npm run dev` — run locally
+- `npm run typecheck` — TypeScript validation
+- `npm run lint` — lint checks
 - `npm run build` — production build
 - `npm run start` — serve production build
-- `npm run lint` — lint checks
 
 ## Environment
 
@@ -60,9 +55,4 @@ Copy `.env.example` to `.env.local` and set values:
 
 ## Deployment
 
-Deploy to Vercel with:
-
-- Preview deployments for pull requests.
-- Production deployments from `main`.
-
-Set environment variables independently in Development, Preview, and Production.
+Deploy to Vercel with preview deployments for pull requests and production deployments from `main`.
