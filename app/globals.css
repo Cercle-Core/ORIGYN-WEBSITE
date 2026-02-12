@@ -430,6 +430,94 @@ pre {
   color: var(--color-neutral-300);
 }
 
+
+.body-lg--tight {
+  margin-top: var(--space-3);
+  max-width: 68ch;
+}
+
+.platform-diagram-wrap {
+  margin-top: var(--space-6);
+}
+
+.platform-diagram {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.platform-diagram__stage {
+  transition: transform var(--motion-fast) ease;
+}
+
+.platform-diagram__rect {
+  fill: rgba(18, 24, 32, 0.95);
+  stroke: rgba(233, 237, 242, 0.2);
+  stroke-width: 1;
+  transition: fill var(--motion-base) ease, stroke var(--motion-base) ease;
+}
+
+.platform-diagram__label {
+  fill: var(--color-neutral-100);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.platform-diagram__arrow,
+.platform-diagram__arrowhead {
+  stroke: var(--color-neutral-500);
+  fill: var(--color-neutral-500);
+  stroke-width: 2;
+  transition: stroke var(--motion-base) ease, fill var(--motion-base) ease;
+}
+
+.platform-diagram__stage:hover {
+  transform: translateY(-2px);
+}
+
+.platform-diagram__stage:hover .platform-diagram__rect {
+  fill: rgba(25, 146, 255, 0.17);
+  stroke: rgba(25, 146, 255, 0.75);
+}
+
+.platform-diagram__stage:hover .platform-diagram__arrow,
+.platform-diagram__stage:hover .platform-diagram__arrowhead {
+  stroke: var(--color-accent-500);
+  fill: var(--color-accent-500);
+}
+
+.diagram-descriptions {
+  margin-top: var(--space-5);
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.diagram-descriptions p,
+.why-grid p {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--color-neutral-300);
+}
+
+.why-grid {
+  margin-top: var(--space-5);
+  max-width: 85ch;
+  display: grid;
+  gap: var(--space-4);
+}
+
+.final-cta {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.btn-row--center {
+  justify-content: center;
+}
+
 .footer {
   border-top: 1px solid rgba(233, 237, 242, 0.12);
   padding: var(--space-7) 0;
@@ -468,6 +556,10 @@ pre {
     grid-column: span 4;
   }
 
+  .diagram-descriptions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .footer-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -498,6 +590,19 @@ pre {
 
   .menu-toggle {
     display: inline-flex;
+  }
+
+  .diagram-descriptions {
+    grid-template-columns: 1fr;
+  }
+
+  .platform-diagram-wrap {
+    overflow-x: auto;
+    padding-bottom: var(--space-2);
+  }
+
+  .platform-diagram {
+    min-width: 760px;
   }
 
   .footer-grid {

@@ -3,14 +3,20 @@
 import { useEffect, useState } from 'react';
 import Button from '../ui/Button';
 
-const links = [
+const defaultLinks = [
   { href: '#platform', label: 'Platform' },
   { href: '#architecture', label: 'Architecture' },
   { href: '#industries', label: 'Industries' },
   { href: '#developers', label: 'Developers' }
 ];
 
-export default function Navbar({ variant = 'sticky' }) {
+const defaultCta = {
+  href: '#access',
+  label: 'Request Access',
+  variant: 'primary'
+};
+
+export default function Navbar({ variant = 'sticky', links = defaultLinks, cta = defaultCta }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -38,9 +44,11 @@ export default function Navbar({ variant = 'sticky' }) {
         </nav>
 
         <div className="nav-actions">
-          <Button as="a" href="#access" variant="primary">
-            Request Access
-          </Button>
+          {cta ? (
+            <Button as="a" href={cta.href} variant={cta.variant ?? 'primary'}>
+              {cta.label}
+            </Button>
+          ) : null}
           <button
             type="button"
             className="menu-toggle"
@@ -60,9 +68,11 @@ export default function Navbar({ variant = 'sticky' }) {
               {link.label}
             </a>
           ))}
-          <Button as="a" href="#access" variant="secondary" onClick={() => setMenuOpen(false)}>
-            Request Access
-          </Button>
+          {cta ? (
+            <Button as="a" href={cta.href} variant="secondary" onClick={() => setMenuOpen(false)}>
+              {cta.label}
+            </Button>
+          ) : null}
         </div>
       </div>
     </header>
