@@ -1,6 +1,6 @@
 /**
  * Code Snippet Block
- * Must support: syntax highlighting (basic), copy button, language tag, dark background
+ * Must support: syntax highlighting, copy button, language tag, dark background
  * Used heavily on Developers page.
  *
  * When to use: CLI examples, architecture references, code snippets
@@ -9,9 +9,23 @@
 'use client';
 
 import { useState } from 'react';
+import { Highlight, themes } from 'prism-react-renderer';
+
+const languageMap = {
+  bash: 'bash',
+  sh: 'bash',
+  js: 'javascript',
+  javascript: 'javascript',
+  ts: 'typescript',
+  typescript: 'typescript',
+  json: 'json',
+  python: 'python',
+  py: 'python',
+};
 
 export default function CodeBlock({ code, language = 'bash', className = '' }) {
   const [copied, setCopied] = useState(false);
+  const prismLang = languageMap[language] || language;
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(code);
@@ -42,11 +56,19 @@ export default function CodeBlock({ code, language = 'bash', className = '' }) {
           {copied ? 'Copied!' : 'Copy'}
         </button>
       </div>
-      <pre className="p-4 overflow-x-auto">
-        <code className="text-code font-mono text-neutral-300">
-          {code}
-        </code>
-      </pre>
+      <Highlight theme={themes.nightOwl} code={code} language={prismLang}>
+        {({ className: preClassName, style, tokens, getLineProps, getTokenProps }) => (
+          <pre className={`${preClassName} p-4 overflow-x-auto text-code font-mono`} style={style}>
+            {tokens.map((line, i) => (
+              <div key={i} {...getLineProps({ line })}>
+                {line.map((token, key) => (
+                  <span key={key} {...getTokenProps({ token })} />
+                ))}
+              </div>
+            ))}
+          </pre>
+        )}
+      </Highlight>
     </div>
   );
 }

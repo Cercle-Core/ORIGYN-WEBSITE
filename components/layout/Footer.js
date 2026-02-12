@@ -29,6 +29,11 @@ export default function Footer() {
     ],
   };
 
+  const social = [
+    { label: 'LinkedIn', href: 'https://linkedin.com', icon: 'linkedin' },
+    { label: 'GitHub', href: 'https://github.com', icon: 'github' },
+  ];
+
   return (
     <footer className="bg-primary-900 border-t border-neutral-800">
       <div className="max-w-[var(--max-content-wide)] mx-auto px-4 md:px-6 lg:px-8 py-16">
@@ -98,6 +103,26 @@ export default function Footer() {
                 <li key={l.href}>
                   <a href={l.href} className="text-body text-neutral-500 hover:text-neutral-300 transition-colors">
                     {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-caption font-display text-neutral-400 uppercase tracking-wider mb-4">
+              Social
+            </h4>
+            <ul className="flex gap-4">
+              {social.map((s) => (
+                <li key={s.href}>
+                  <a
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-body text-neutral-500 hover:text-neutral-300 transition-colors"
+                    aria-label={s.label}
+                  >
+                    {s.label}
                   </a>
                 </li>
               ))}

@@ -8,7 +8,8 @@
  */
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import Button from '../ui/Button';
 
 const navLinks = [
@@ -18,10 +19,20 @@ const navLinks = [
   { label: 'R&D', href: '/rnd' },
 ];
 
-export default function Navbar({ variant = 'transparent' }) {
+export default function Navbar({ variant = 'transparent', scrollBehavior = true }) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
-  const isSolid = variant === 'solid';
+  useEffect(() => {
+    if (!scrollBehavior || variant !== 'transparent') return;
+    const handleScroll = () => setScrolled(window.scrollY > 24);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [scrollBehavior, variant]);
+
+  const isSolid = variant === 'solid' || (variant === 'transparent' && scrollBehavior && scrolled);
 
   return (
     <header
@@ -40,15 +51,20 @@ export default function Navbar({ variant = 'transparent' }) {
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-caption text-neutral-400 hover:text-neutral-100 transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href || (link.href !== '/' && pathname?.startsWith(link.href));
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className={`text-caption transition-colors ${
+                    isActive ? 'text-neutral-100 font-medium' : 'text-neutral-400 hover:text-neutral-100'
+                  }`}
+                >
+                  {link.label}
+                </a>
+              );
+            })}
             <Button variant="primary">Request Access</Button>
           </div>
 
@@ -72,16 +88,19 @@ export default function Navbar({ variant = 'transparent' }) {
         {mobileOpen && (
           <div className="md:hidden py-4 border-t border-neutral-800">
             <div className="flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="text-body text-neutral-400 hover:text-neutral-100 transition-colors"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {link.label}
-                </a>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = pathname === link.href || (link.href !== '/' && pathname?.startsWith(link.href));
+                return (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className={`transition-colors ${isActive ? 'text-neutral-100 font-medium' : 'text-neutral-400 hover:text-neutral-100'}`}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {link.label}
+                  </a>
+                );
+              })}
               <Button variant="primary" className="w-full justify-center">
                 Request Access
               </Button>
