@@ -133,7 +133,7 @@ export default function Home() {
             <Button as="a" href="#final-cta" variant="primary">
               Request Access
             </Button>
-            <Button as="a" href="#platform-overview" variant="secondary">
+            <Button as="a" href="/platform" variant="secondary">
               Explore Platform
             </Button>
           </div>
