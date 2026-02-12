@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== DESIGN TOKENS (CSS Variables for runtime) ===== */
+:root {
+  /* Primary */
+  --color-primary-900: #0B0F14;
+  --color-primary-800: #121820;
+  --color-primary-700: #1B2430;
+  
+  /* Accent */
+  --color-accent: #3B82F6;
+  --color-accent-hover: #2563EB;
+  
+  /* Spacing (4px base) */
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-48: 48px;
+  --spacing-64: 64px;
+  --spacing-96: 96px;
+  
+  /* Grid */
+  --max-content: 1200px;
+  --max-content-wide: 1400px;
+  --gutter: 24px;
+  
+  /* Motion */
+  --duration-fast: 200ms;
+  --duration-normal: 300ms;
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@layer base {
+  body {
+    @apply bg-primary-900 text-neutral-100 font-body antialiased;
+  }
+}
