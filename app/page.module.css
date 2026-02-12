@@ -1,0 +1,211 @@
+.homePage {
+  margin: 0 auto;
+  max-width: 1100px;
+  padding: 2rem 1.5rem 4rem;
+  color: #0f172a;
+  background: #f8fafc;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+    sans-serif;
+  line-height: 1.5;
+}
+
+.sectionSpacing {
+  margin-bottom: 4.5rem;
+}
+
+.homePage h1,
+.homePage h2,
+.homePage h3,
+.homePage p {
+  margin: 0;
+}
+
+.homePage h1 {
+  max-width: 20ch;
+  margin-top: 0.75rem;
+  font-size: clamp(2rem, 4.8vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.homePage h2 {
+  margin-bottom: 0.8rem;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.homePage h3 {
+  font-size: 1.05rem;
+  line-height: 1.3;
+}
+
+.homePage section p + p {
+  margin-top: 0.8rem;
+}
+
+.eyebrow {
+  color: #0f766e;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.sectionIntro {
+  max-width: 65ch;
+  margin-top: 0.8rem;
+  color: #1e293b;
+}
+
+.hero {
+  padding-top: 1.5rem;
+}
+
+.hero .sectionIntro {
+  max-width: 56ch;
+}
+
+.ctaGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.55rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.btnPrimary {
+  background: #0f172a;
+  color: #f8fafc;
+}
+
+.btnPrimary:hover {
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.2);
+}
+
+.btnSecondary {
+  border-color: #cbd5e1;
+  color: #0f172a;
+  background: #ffffff;
+}
+
+.diagram {
+  margin-top: 1rem;
+  border: 1px solid #dbe3ee;
+  border-radius: 0.75rem;
+  background: #ffffff;
+  padding: 1.1rem;
+}
+
+.svg {
+  width: 100%;
+  height: auto;
+}
+
+.layer rect {
+  fill: #f1f5f9;
+  stroke: #cbd5e1;
+  stroke-width: 1;
+  transition: fill 180ms ease, stroke 180ms ease;
+}
+
+.layer text {
+  fill: #0f172a;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.layer:hover rect {
+  fill: #dbeafe;
+  stroke: #93c5fd;
+}
+
+.layerDescriptionGrid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem;
+}
+
+.layerDescription {
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  background: #ffffff;
+}
+
+.layerDescription p {
+  margin-top: 0.35rem;
+  font-size: 0.94rem;
+  color: #334155;
+}
+
+.cardGrid,
+.tileGrid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0.75rem;
+}
+
+.card,
+.tile {
+  border: 1px solid #e2e8f0;
+  border-radius: 0.6rem;
+  background: #ffffff;
+  padding: 0.95rem;
+}
+
+.card p,
+.tile p {
+  margin-top: 0.4rem;
+  color: #334155;
+  font-size: 0.95rem;
+}
+
+.finalCta {
+  margin-bottom: 0;
+  padding: 2rem;
+  border: 1px solid #dbe3ee;
+  border-radius: 0.9rem;
+  background: #ffffff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .layer rect {
+    transition: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .homePage {
+    padding: 1.5rem 1rem 2.5rem;
+  }
+
+  .sectionSpacing {
+    margin-bottom: 3.2rem;
+  }
+}
