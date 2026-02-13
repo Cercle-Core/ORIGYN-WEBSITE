@@ -9,19 +9,21 @@
 export default function Footer() {
   const links = {
     platform: [
-      { label: 'Capabilities', href: '/platform#capabilities' },
-      { label: 'Architecture', href: '/platform#architecture' },
+      { label: 'Architecture', href: '/platform' },
+      { label: 'Developers', href: '/developers' },
     ],
     industries: [
       { label: 'Manufacturing', href: '/industries#manufacturing' },
+      { label: 'Automotive', href: '/industries#automotive' },
       { label: 'Energy', href: '/industries#energy' },
+      { label: 'Aerospace', href: '/industries#aerospace' },
+      { label: 'Mining', href: '/industries#mining' },
+      { label: 'Infrastructure', href: '/industries#infrastructure' },
     ],
-    developers: [
-      { label: 'Docs', href: '/developers#docs' },
-      { label: 'API', href: '/developers#api' },
-    ],
-    rnd: [
-      { label: 'Research', href: '/rnd' },
+    company: [
+      { label: 'About', href: '/about' },
+      { label: 'Careers', href: '/careers' },
+      { label: 'Contact', href: '/contact' },
     ],
     legal: [
       { label: 'Privacy', href: '/privacy' },
@@ -68,24 +70,10 @@ export default function Footer() {
           </div>
           <div>
             <h4 className="text-caption font-display text-neutral-400 uppercase tracking-wider mb-4">
-              Developers
+              Company
             </h4>
             <ul className="space-y-2">
-              {links.developers.map((l) => (
-                <li key={l.href}>
-                  <a href={l.href} className="text-body text-neutral-500 hover:text-neutral-300 transition-colors">
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-caption font-display text-neutral-400 uppercase tracking-wider mb-4">
-              R&D
-            </h4>
-            <ul className="space-y-2">
-              {links.rnd.map((l) => (
+              {links.company.map((l) => (
                 <li key={l.href}>
                   <a href={l.href} className="text-body text-neutral-500 hover:text-neutral-300 transition-colors">
                     {l.label}

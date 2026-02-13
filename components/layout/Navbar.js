@@ -15,8 +15,10 @@ import Button from '../ui/Button';
 const navLinks = [
   { label: 'Platform', href: '/platform' },
   { label: 'Industries', href: '/industries' },
+  { label: 'Use Cases', href: '/use-cases' },
   { label: 'Developers', href: '/developers' },
   { label: 'R&D', href: '/rnd' },
+  { label: 'About', href: '/about' },
 ];
 
 export default function Navbar({ variant = 'transparent', scrollBehavior = true }) {
