@@ -11,6 +11,7 @@ export default function Footer() {
     platform: [
       { label: 'Architecture', href: '/platform' },
       { label: 'Developers', href: '/developers' },
+      { label: 'Blog', href: '/blog' },
     ],
     industries: [
       { label: 'Manufacturing', href: '/industries#manufacturing' },
