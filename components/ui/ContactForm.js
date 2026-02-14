@@ -1,7 +1,7 @@
 /**
  * Contact Form
  * Name, email, type (recruit/investor/partner), message.
- * Used on Contact page.
+ * Used on Contact page. Submits to /api/contact with rate limiting.
  */
 'use client';
 
@@ -9,10 +9,43 @@ import { useState } from 'react';
 
 export default function ContactForm({ className = '' }) {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    setError(null);
+    setLoading(true);
+
+    const form = e.target;
+    const payload = {
+      name: form.name.value.trim(),
+      email: form.email.value.trim(),
+      type: form.type.value || 'other',
+      message: form.message.value.trim(),
+    };
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        setError(data.error || 'Something went wrong. Please try again.');
+        setLoading(false);
+        return;
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      setError('Failed to send. Please check your connection and try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
@@ -45,6 +78,14 @@ export default function ContactForm({ className = '' }) {
         ${className}
       `}
     >
+      {error && (
+        <div
+          role="alert"
+          className="p-3 rounded-md bg-red-900/30 border border-red-800 text-red-200 text-body"
+        >
+          {error}
+        </div>
+      )}
       <div>
         <label htmlFor="name" className="block text-caption text-neutral-400 mb-2">
           Name
@@ -101,9 +142,10 @@ export default function ContactForm({ className = '' }) {
       </div>
       <button
         type="submit"
-        className="inline-flex items-center justify-center h-10 px-6 text-body font-medium rounded-md bg-accent text-white hover:bg-accent-hover transition-all duration-200"
+        disabled={loading}
+        className="inline-flex items-center justify-center h-10 px-6 text-body font-medium rounded-md bg-accent text-white hover:bg-accent-hover transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
       >
-        Send message
+        {loading ? 'Sending...' : 'Send message'}
       </button>
     </form>
   );

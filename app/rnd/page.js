@@ -1,6 +1,17 @@
 import { Section, Container, Grid } from '../../components/layout';
 import { Button, Card, TechnicalHighlight, FadeIn } from '../../components/ui';
 
+export const metadata = {
+  title: 'R&D',
+  description:
+    'Simulation-first research. Closed-loop experimentation. Industrial co-design. Partner with ORIGYN on industrial AI research.',
+  openGraph: {
+    title: 'R&D | ORIGYN',
+    description:
+      'Simulation-first research. Closed-loop experimentation. Industrial co-design.',
+  },
+};
+
 export default function RndPage() {
   return (
     <main className="pt-16">

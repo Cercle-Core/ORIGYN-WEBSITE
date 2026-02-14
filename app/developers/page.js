@@ -8,6 +8,16 @@ import {
   FadeIn,
 } from '../../components/ui';
 
+export const metadata = {
+  title: 'Developers',
+  description:
+    'Build industrial AI with the tools you know. Python, C++, Rust, TypeScript. PyTorch, TensorFlow, ONNX. Production-ready from day one.',
+  openGraph: {
+    title: 'Developers | ORIGYN',
+    description: 'Build industrial AI with the tools you know. Production-ready from day one.',
+  },
+};
+
 export default function DevelopersPage() {
   return (
     <main className="pt-16">

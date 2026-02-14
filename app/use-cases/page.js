@@ -1,6 +1,17 @@
 import { Section, Container, Grid } from '../../components/layout';
 import { Button, UseCaseCard, FadeIn } from '../../components/ui';
 
+export const metadata = {
+  title: 'Use Cases',
+  description:
+    'Industrial AI applications that ship. Predictive maintenance, smart factory, fleet intelligence, digital twin, autonomous systems.',
+  openGraph: {
+    title: 'Use Cases | ORIGYN',
+    description:
+      'Industrial AI applications that ship. From predictive maintenance to autonomous systems.',
+  },
+};
+
 const useCases = [
   {
     title: 'Predictive maintenance',

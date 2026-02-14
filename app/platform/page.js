@@ -7,6 +7,17 @@ import {
   FadeIn,
 } from '../../components/ui';
 
+export const metadata = {
+  title: 'Platform',
+  description:
+    'ORIGYN platform architecture. Data layer, model layer, control layer. From ingestion to actuation. Built for production.',
+  openGraph: {
+    title: 'Platform | ORIGYN',
+    description:
+      'ORIGYN platform architecture. Data to actuation. Built for production.',
+  },
+};
+
 export default function PlatformPage() {
   return (
     <main className="pt-16">

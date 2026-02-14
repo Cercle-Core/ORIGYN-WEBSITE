@@ -3,6 +3,7 @@
  * Post preview for blog listing. Uses design tokens.
  */
 import Link from 'next/link';
+import Image from 'next/image';
 import { urlFor } from '../../lib/sanity';
 
 export default function BlogPostCard({ post }) {
@@ -20,11 +21,13 @@ export default function BlogPostCard({ post }) {
     >
       <article>
         {coverImage && (
-          <div className="mb-4 -mx-6 -mt-6 overflow-hidden rounded-t-lg">
-            <img
+          <div className="mb-4 -mx-6 -mt-6 overflow-hidden rounded-t-lg relative aspect-[600/320]">
+            <Image
               src={urlFor(coverImage).width(600).height(320).fit('crop').url()}
               alt=""
-              className="w-full h-48 object-cover"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
+              className="object-cover"
             />
           </div>
         )}

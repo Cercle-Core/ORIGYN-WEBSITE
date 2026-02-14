@@ -6,8 +6,9 @@
 'use client';
 
 import { PortableText } from '@portabletext/react';
+import Image from 'next/image';
 import { urlFor } from '../../lib/sanity';
-import CodeBlock from '../ui/CodeBlock';
+import { CodeBlock } from '../ui';
 
 const components = {
   types: {
@@ -16,11 +17,15 @@ const components = {
       const src = urlFor(value).width(800).fit('max').url();
       return (
         <figure className="my-8">
-          <img
-            src={src}
-            alt={value.alt || ''}
-            className="rounded-lg w-full"
-          />
+          <div className="relative w-full aspect-video rounded-lg overflow-hidden">
+            <Image
+              src={src}
+              alt={value.alt || ''}
+              fill
+              sizes="(max-width: 800px) 100vw, 800px"
+              className="object-contain rounded-lg"
+            />
+          </div>
           {value.alt && (
             <figcaption className="mt-2 text-caption text-neutral-500 text-center">
               {value.alt}

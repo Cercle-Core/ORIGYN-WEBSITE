@@ -1,6 +1,16 @@
 import { Section, Container, Grid } from '../../components/layout';
 import { Button, JobCard, FadeIn } from '../../components/ui';
 
+export const metadata = {
+  title: 'Careers',
+  description:
+    'Build industrial AI that ships. Join engineers who bridge research and production. Open roles in control systems, ML, and solutions.',
+  openGraph: {
+    title: 'Careers | ORIGYN',
+    description: 'Build industrial AI that ships. Join engineers who bridge research and production.',
+  },
+};
+
 const jobs = [
   {
     title: 'Senior Control Systems Engineer',

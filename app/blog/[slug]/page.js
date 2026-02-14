@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Section, Container } from '../../../components/layout';
 import { BlogPostContent, CategoryPill } from '../../../components/blog';
 import { client, urlFor } from '../../../lib/sanity';
@@ -44,6 +45,8 @@ async function getPost(slug) {
   }
 }
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://origyn.com';
+
 export default async function BlogPostPage({ params }) {
   const post = await getPost(params.slug);
   if (!post) notFound();
@@ -51,8 +54,29 @@ export default async function BlogPostPage({ params }) {
   const { title, excerpt, publishedAt, author, category, coverImage, body } =
     post;
 
+  const blogPostingSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: title,
+    description: excerpt,
+    datePublished: publishedAt,
+    author: author?.name
+      ? { '@type': 'Person', name: author.name }
+      : { '@type': 'Organization', name: 'ORIGYN' },
+    image: coverImage
+      ? urlFor(coverImage).width(1200).height(630).url()
+      : undefined,
+    url: `${siteUrl}/blog/${params.slug}`,
+  };
+
   return (
     <main className="pt-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(blogPostingSchema),
+        }}
+      />
       <Section background="primary-800">
         <Container>
           <div className="max-w-3xl">
@@ -88,11 +112,13 @@ export default async function BlogPostPage({ params }) {
       {coverImage && (
         <Section background="default">
           <Container>
-            <div className="max-w-4xl mx-auto">
-              <img
+            <div className="max-w-4xl mx-auto relative aspect-[2/1] rounded-lg overflow-hidden">
+              <Image
                 src={urlFor(coverImage).width(1200).height(600).fit('max').url()}
                 alt=""
-                className="w-full rounded-lg"
+                fill
+                sizes="(max-width: 1200px) 100vw, 1200px"
+                className="object-cover rounded-lg"
               />
             </div>
           </Container>

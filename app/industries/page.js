@@ -1,6 +1,16 @@
 import { Section, Container, Grid } from '../../components/layout';
 import { Button, IndustryDetailCard, FadeIn } from '../../components/ui';
 
+export const metadata = {
+  title: 'Industries',
+  description:
+    'Industrial AI that ships. Manufacturing, automotive, energy, aerospace, mining, infrastructure. Solutions by industry.',
+  openGraph: {
+    title: 'Industries | ORIGYN',
+    description: 'Industrial AI that ships. From manufacturing to infrastructure.',
+  },
+};
+
 const industries = [
   {
     id: 'manufacturing',

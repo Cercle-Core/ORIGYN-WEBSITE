@@ -1,6 +1,17 @@
 import { Section, Container } from '../../components/layout';
 import { Button, FadeIn } from '../../components/ui';
 
+export const metadata = {
+  title: 'About',
+  description:
+    'ORIGYN exists to close the gap between AI research and industrial production. Mission, values, and team building industrial intelligence infrastructure.',
+  openGraph: {
+    title: 'About | ORIGYN',
+    description:
+      'ORIGYN exists to close the gap between AI research and industrial production.',
+  },
+};
+
 export default function AboutPage() {
   return (
     <main className="pt-16">

@@ -1,6 +1,16 @@
 import { Section, Container, Grid } from '../../components/layout';
 import { ContactForm, FadeIn } from '../../components/ui';
 
+export const metadata = {
+  title: 'Contact',
+  description:
+    'Get in touch with ORIGYN. Recruits, investors, partners. General inquiries, partnerships, and careers.',
+  openGraph: {
+    title: 'Contact | ORIGYN',
+    description: 'Get in touch with ORIGYN. Recruits, investors, partners.',
+  },
+};
+
 export default function ContactPage() {
   return (
     <main className="pt-16">

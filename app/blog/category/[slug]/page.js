@@ -18,6 +18,10 @@ export async function generateMetadata({ params }) {
     return {
       title: `${category.title} | ORIGYN Blog`,
       description: category.description || `Posts in ${category.title}`,
+      openGraph: {
+        title: `${category.title} | ORIGYN Blog`,
+        description: category.description || `Posts in ${category.title}`,
+      },
     };
   } catch {
     return { title: 'Category | ORIGYN Blog' };

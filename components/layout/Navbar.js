@@ -48,8 +48,12 @@ export default function Navbar({ variant = 'transparent', scrollBehavior = true 
       <nav className="max-w-[var(--max-content-wide)] mx-auto px-4 md:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="/" className="text-body font-display text-neutral-100 hover:text-white transition-colors">
-            ORIGYN
+          <a
+            href="/"
+            className="flex items-center gap-2 text-body font-display text-neutral-100 hover:text-white transition-colors"
+          >
+            <img src="/logo.svg" alt="" width={28} height={28} className="shrink-0" />
+            <span>ORIGYN</span>
           </a>
 
           {/* Desktop nav */}
