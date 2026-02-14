@@ -24,25 +24,34 @@ function ArchitectureLayer({ title, description, detail, index }) {
   const [revealed, setRevealed] = useState(false);
 
   return (
-    <div
+    <button
+      type="button"
       className={`
-        relative rounded-lg p-6
+        group relative rounded-lg p-6 text-left w-full
         bg-neutral-900/50 border border-neutral-800
         shadow-sm
         transition-all duration-300 ease-smooth
         hover:border-neutral-700 hover:shadow-md
+        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-primary-900
       `}
+      onClick={() => setRevealed((value) => !value)}
       onMouseEnter={() => setRevealed(true)}
       onMouseLeave={() => setRevealed(false)}
+      aria-expanded={revealed}
     >
       <div className="flex items-start gap-4">
         <span className="text-caption font-mono text-accent/80 shrink-0">
           {String(index + 1).padStart(2, '0')}
         </span>
         <div className="min-w-0 flex-1">
-          <h4 className="text-h4 font-display text-neutral-100 mb-2">
-            {title}
-          </h4>
+          <div className="flex items-center justify-between gap-4">
+            <h4 className="text-h4 font-display text-neutral-100 mb-2">
+              {title}
+            </h4>
+            <span className="text-caption text-neutral-500 group-hover:text-neutral-300 transition-colors">
+              {revealed ? 'Hide detail' : 'View detail'}
+            </span>
+          </div>
           <p className="text-body text-neutral-400">
             {description}
           </p>
@@ -60,6 +69,6 @@ function ArchitectureLayer({ title, description, detail, index }) {
           )}
         </div>
       </div>
-    </div>
+    </button>
   );
 }
