@@ -101,7 +101,7 @@ export default function Home() {
             description="A layered architecture that keeps modeling and control tightly coupled without introducing brittle handoffs."
           />
           <ArchitectureDiagram
-            layers=[
+            layers={[
               {
                 title: 'Data layer',
                 description: 'Industrial telemetry, sensor streams, and historical data.',
@@ -117,7 +117,7 @@ export default function Home() {
                 description: 'Actuation, closed-loop optimization, system signals.',
                 detail: 'Sub-second latency. Fault-tolerant. Audit trails.',
               },
-            ]
+            ]}
           />
           <div className="mt-8">
             <a
