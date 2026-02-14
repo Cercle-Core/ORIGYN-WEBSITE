@@ -13,19 +13,21 @@ export default function Card({
   title,
   description,
   href,
+  linkLabel = 'Learn more',
   className = '',
 }) {
   const variants = {
     default: 'bg-neutral-900/50 border border-neutral-800',
     compact: 'bg-neutral-900/30 border border-neutral-800 p-4',
     large: 'bg-neutral-900/50 border border-neutral-800 p-8',
+    featured: 'bg-gradient-to-b from-primary-700/60 to-neutral-900/80 border border-accent/30 shadow-[0_0_35px_-18px_rgba(59,130,246,0.5)]',
     highlighted: 'bg-accent/15 border border-accent/30',
   };
 
   return (
     <div
       className={`
-        rounded-lg p-6
+        group rounded-lg p-6 h-full
         transition-all duration-200 ease-smooth
         hover:border-neutral-700
         ${variants[variant]}
@@ -49,12 +51,15 @@ export default function Card({
       )}
       {children}
       {href && (
-        <a
-          href={href}
-          className="text-caption text-accent hover:text-accent-hover transition-colors"
-        >
-          Learn more →
-        </a>
+        <div className="pt-3 mt-auto border-t border-neutral-800/80">
+          <a
+            href={href}
+            className="inline-flex items-center gap-2 text-caption text-accent transition-all duration-200 hover:text-accent-hover group-hover:translate-x-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-primary-900 rounded"
+          >
+            {linkLabel}
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
       )}
     </div>
   );
